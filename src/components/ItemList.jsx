@@ -12,6 +12,7 @@ const ItemList = ({ contents }) => {
     <div className="p-2">
       {contents.map((content) => (
         <div
+          data-testid="itemList"
           key={content?.card?.info?.id}
           className="border-b-2 border-solid border-gray-100 flex flex-justify-between items-center p-2"
         >
