@@ -22,6 +22,8 @@ const Body = () => {
       setFilterResData(resData);
     }
   }, [resData]);
+  console.log(filterResData, "resData");
+
   if (onlineStatus === false)
     return (
       <h1>You are not online ,please check your network connection !!!</h1>

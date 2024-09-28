@@ -9,7 +9,6 @@ const Header = () => {
   const [btnName, setBtnName] = useState("Login");
   const onlineStatus = useOnlineStatus();
   const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems);
 
   const { loggedInUser } = useContext(userContext);
 
