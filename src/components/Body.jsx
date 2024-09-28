@@ -16,13 +16,11 @@ const Body = () => {
   const onlineStatus = useOnlineStatus();
   const resData = useRestaurantList();
   const WithPopularLabelComponent = withPopularLabel(RestaurantCard);
-  console.log(resData, "....");
   useEffect(() => {
     if (resData) {
       setFilterResData(resData);
     }
   }, [resData]);
-  console.log(filterResData, "resData");
 
   if (onlineStatus === false)
     return (
@@ -34,6 +32,7 @@ const Body = () => {
     <div className="bg-slate-50">
       <div className="">
         <input
+          data-testid="search-input"
           className="border border-solid  rounded-lg bg-slate-50 m-4 p-2"
           value={searchData}
           onChange={(e) => setSearchData(e.target.value)}
@@ -41,7 +40,7 @@ const Body = () => {
         <button
           className="m-2 p-2 rounded-lg font-bold border border-solid shadow-md bg-gray-400"
           onClick={() => {
-            searchedRestaurant = resData.filter((res) =>
+            const searchedRestaurant = resData.filter((res) =>
               res?.info?.name.toLowerCase().includes(searchData.toLowerCase())
             );
             setFilterResData(searchedRestaurant);
@@ -52,7 +51,9 @@ const Body = () => {
         <button
           className="border border-solid rounded-lg bg-gray-400 p-2 m-2"
           onClick={() => {
-            filteredRes = resData.filter((res) => res.info?.avgRating > 4.2);
+            const filteredRes = resData.filter(
+              (res) => res.info?.avgRating > 4.2
+            );
             setFilterResData(filteredRes);
           }}
         >
